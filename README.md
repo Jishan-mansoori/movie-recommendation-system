@@ -37,9 +37,9 @@ movie-recommendation-system
 │   └── tmdb_5000_credits.csv
 │
 ├── notebook/
-│   └── movie_recommender.ipynb
+│   └── movie_recommender.ipynb   # model training notebook
 │
-├── app.py
+├── app.py                        # streamlit web app
 ├── requirements.txt
 ├── .env
 ├── .gitignore
@@ -51,68 +51,58 @@ movie-recommendation-system
 # 🧠 How the Recommendation System Works
 
 1. Movie and credits datasets are loaded.
-2. Important features such as **genres, keywords, cast, and overview** are combined.
-3. Text data is converted into numerical vectors using **CountVectorizer**.
-4. **Cosine Similarity** is used to compute similarity between movies.
-5. When a user selects a movie, the system recommends the **top 5 most similar movies**.
+2. Features such as **genres, keywords, cast, and overview** are combined.
+3. Text data is converted into vectors using **CountVectorizer**.
+4. **Cosine Similarity** calculates similarity between movies.
+5. The system recommends the **top 5 similar movies**.
 
 ---
 
-# 🔑 Environment Variables
+# ⚙️ Setup & Run
 
-This project uses the **TMDB API** to fetch movie posters.
+## 1️⃣ Clone the repository
 
-Create a `.env` file in the root directory and add:
-
-```
-TMDB_API_KEY=your_tmdb_api_key
-```
-
-You can get your API key from:
-https://www.themoviedb.org/settings/api
-
----
-
-# ⚙️ Installation
-
-### 1️⃣ Clone the repository
-
-```
+```bash
 git clone https://github.com/Jishan-mansoori/movie-recommendation-system.git
 cd movie-recommendation-system
 ```
 
-### 2️⃣ Create virtual environment (optional)
-
-```
-python -m venv venv
-```
-
-Activate environment:
-
-Windows
-
-```
-venv\Scripts\activate
-```
-
-Mac/Linux
-
-```
-source venv/bin/activate
-```
-
 ---
 
-### 3️⃣ Install dependencies
+## 2️⃣ Install dependencies
 
-```
+```bash
 pip install -r requirements.txt
 ```
 
 ---
 
-### 4️⃣ Run the application
+## 3️⃣ Create environment variable
+
+Create a `.env` file in the root directory.
+
+```
+TMDB_API_KEY=your_tmdb_api_key
+```
+
+Get API key from
+https://www.themoviedb.org/settings/api
+
+---
+
+## 4️⃣ Run the notebook to generate model files
+
+Before running the web app, execute the notebook:
+
+```
+notebook/movie_recommender.ipynb
+```
+
+Run all cells to generate the **pickle files used by the application**.
+
+---
+
+## 5️⃣ Run the Streamlit app
 
 ```
 streamlit run app.py
@@ -120,7 +110,7 @@ streamlit run app.py
 
 ---
 
-### 5️⃣ Open in browser
+## 6️⃣ Open in browser
 
 ```
 http://localhost:8501
@@ -130,33 +120,23 @@ http://localhost:8501
 
 # 📊 Dataset
 
-The project uses the **TMDB 5000 Movie Dataset**, which includes:
+This project uses the **TMDB 5000 Movie Dataset** containing:
 
 * Movie titles
 * Genres
 * Cast
 * Crew
 * Keywords
-* Movie overview
-
-These features are used to calculate similarity between movies.
+* Overview
 
 ---
 
 # 💡 Future Improvements
 
-* Add user authentication
-* Deploy on Streamlit Cloud
 * Add collaborative filtering
-* Improve UI/UX design
-* Add search autocomplete
-
----
-
-# 🤝 Contributing
-
-Contributions are welcome!
-Feel free to fork this repository and submit a pull request.
+* Deploy on Streamlit Cloud
+* Improve UI
+* Add movie search autocomplete
 
 ---
 
